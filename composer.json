@@ -1,0 +1,11 @@
+{
+    "name": "mouseleo/laravel-sso",
+    "description": "A sso package for laravel.",
+    "authors": [
+        {
+            "name": "mouseleo",
+            "email": "653642247@qq.com"
+        }
+    ],
+    "require": {}
+}
