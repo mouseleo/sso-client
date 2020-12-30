@@ -1,2 +1,1 @@
-# laravel-sso
-
+# Sso Client for Laravel

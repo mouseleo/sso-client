@@ -11,5 +11,15 @@
     "require-dev": {
         "orchestra/testbench": "^6.7",
         "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "\\Mouseleo\\SsoClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "\\Mouseleo\\SsoClient\\Test\\": "tests/"
+        }
     }
 }
