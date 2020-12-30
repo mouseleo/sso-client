@@ -1,6 +1,7 @@
 {
     "name": "mouseleo/sso-client",
     "description": "A sso client package for laravel.",
+    "license": "MIT",
     "authors": [
         {
             "name": "mouseleo",
