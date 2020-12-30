@@ -1,11 +1,15 @@
 {
-    "name": "mouseleo/laravel-sso",
-    "description": "A sso package for laravel.",
+    "name": "mouseleo/sso-client",
+    "description": "A sso client package for laravel.",
     "authors": [
         {
             "name": "mouseleo",
             "email": "653642247@qq.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^6.7",
+        "guzzlehttp/guzzle": "^7.2"
+    }
 }
