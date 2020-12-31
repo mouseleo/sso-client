@@ -1,10 +1,10 @@
 <?php
 
-namespace Mouseleo\LaravelSso;
+namespace Mouseleo\SsoClient;
 
 use Illuminate\Support\ServiceProvider;
 
-class SsoServiceProvider extends ServiceProvider
+class SsoClientServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,7 +13,7 @@ class SsoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__ . '/../config/sso.php', 'sso');
     }
 
     /**

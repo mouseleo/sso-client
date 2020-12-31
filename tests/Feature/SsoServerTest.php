@@ -1,21 +1,27 @@
 <?php
 
-namespace Mouseleo\SsoClient\Test;
+namespace Mouseleo\SsoClient\Test\Feature;
 
 use Illuminate\Support\Facades\Http;
-use Orchestra\Testbench\TestCase;
+use Mouseleo\SsoClient\Test\TestCase as TestTestCase;
 
-class SsoServerTest extends TestCase
+class SsoServerTest extends TestTestCase
 {
-    public function test_can_access_the_sso_server()
+    public function test_the_sso_server_is_ok()
     {
-        $response = Http::get('http://sso.test');
+        $response = Http::withToken(config('sso.token'))
+            ->baseUrl(config('sso.base_url'))
+            ->post('auth-check/create');
 
         $this->assertTrue($response->successful());
     }
 
-    public function test_the_sso_server_api_is_ok()
+    public function test_can_get_authenticated_user()
     {
-        $this->assertTrue(true);
+        $response = Http::withToken(config('sso.token'))
+            ->baseUrl(config('sso.base_url'))
+            ->post('auth-user/show');
+
+        $this->assertTrue($response->successful());
     }
 }

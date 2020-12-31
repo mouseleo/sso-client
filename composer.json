@@ -1,6 +1,7 @@
 {
     "name": "mouseleo/sso-client",
     "description": "A sso client package for laravel.",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -15,12 +16,22 @@
     },
     "autoload": {
         "psr-4": {
-            "\\Mouseleo\\SsoClient\\": "src/"
-        }
+            "Mouseleo\\SsoClient\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "\\Mouseleo\\SsoClient\\Test\\": "tests/"
+            "Mouseleo\\SsoClient\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mouseleo\\SsoClient\\SsoClientServiceProvider"
+            ]
         }
     }
 }
