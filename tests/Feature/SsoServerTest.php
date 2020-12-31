@@ -15,13 +15,4 @@ class SsoServerTest extends TestTestCase
 
         $this->assertTrue($response->successful());
     }
-
-    public function test_can_get_authenticated_user()
-    {
-        $response = Http::withToken(config('sso.token'))
-            ->baseUrl(config('sso.base_url'))
-            ->post('auth-user/show');
-
-        $this->assertTrue($response->successful());
-    }
 }

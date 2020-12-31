@@ -2,34 +2,52 @@
 
 namespace Mouseleo\SsoClient\Services;
 
+use Exception;
+use Illuminate\Support\Facades\Http;
 use Mouseleo\SsoClient\Contracts\SsoClientInterface;
 
 class SsoClient implements SsoClientInterface
 {
 
     /**
-     * Pull the sso server users.
-     * 
-     * fetch remote users and put them to local sso users table.
+     * Fetch the register app users from sso server.
      *
-     * @return boolean
+     * @return array
      */
-    public function pull(): bool
+    public function fetch()
     {
-        return true;
+        $response = Http::withToken(config('sso.token'))
+            ->baseUrl(config('sso.base_url'))
+            ->post('register-app-user-export/create', [
+                'register_app_id' => config('sso.register_app_id')
+            ]);
+
+        if ($response->successful()) {
+            return $response->json('data');
+        } else {
+            return null;
+        }
     }
 
     /**
-     * Determine the token is valid.
-     * 
-     * first, check token via sso server and get the user attributes.
-     * then, sync the user attributes to local database.
+     * Check the token via sso server and return the user attributes.
      *
      * @param string $token
-     * @return boolean
+     * @return array
      */
-    public function check(string $token = ''): bool
+    public function check(string $token = '')
     {
-        return true;
+        $token = $token ?: request()->bearerToken();
+        $response = Http::withToken($token)
+            ->baseUrl(config('sso.base_url'))
+            ->post('auth-check/create', [
+                'register_app_id' => config('sso.register_app_id'),
+            ]);
+
+        if ($response->successful()) {
+            return $response->json('data');
+        } else {
+            return null;
+        }
     }
 }

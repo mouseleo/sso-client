@@ -5,22 +5,17 @@ namespace Mouseleo\SsoClient\Contracts;
 interface SsoClientInterface
 {
     /**
-     * Pull the sso server users.
-     * 
-     * fetch remote users and put them to local sso users table.
+     * Fetch the register app users from sso server.
      *
-     * @return boolean
+     * @return array|null
      */
-    public function pull(): bool;
+    public function fetch();
 
     /**
-     * Determine the token is valid.
-     * 
-     * first, check token via sso server and get the user attributes.
-     * then, sync the user attributes to local database.
+     * Check the token via sso server and return the user attributes.
      *
      * @param string $token
-     * @return boolean
+     * @return array|null
      */
-    public function check(string $token = ''): bool;
+    public function check(string $token = '');
 }
