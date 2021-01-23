@@ -4,6 +4,9 @@ namespace Mouseleo\SsoClient\Test\Feature;
 
 use Illuminate\Support\Facades\Http;
 use Mouseleo\SsoClient\Test\TestCase as TestTestCase;
+use phpDocumentor\Reflection\PseudoTypes\True_;
+
+use function PHPUnit\Framework\assertTrue;
 
 class SsoServerTest extends TestTestCase
 {
@@ -14,5 +17,10 @@ class SsoServerTest extends TestTestCase
             ->post('auth-check/create');
 
         $this->assertTrue($response->successful());
+    }
+
+    public function test_env()
+    {
+        assertTrue(true);
     }
 }

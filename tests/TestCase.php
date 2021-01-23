@@ -10,8 +10,6 @@ abstract class TestCase extends TestbenchTestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        // additional setUp
     }
 
     /**
@@ -36,5 +34,15 @@ abstract class TestCase extends TestbenchTestCase
     protected function getEnvironmentSetUp($app)
     {
         // perform environment setup
+        $env_path = __DIR__ . '/../.env';
+        $result = file_get_contents($env_path);
+        $arr = preg_split('/\s+/', $result);
+
+        foreach ($arr as $line) {
+            putenv($line);
+        }
+
+        // $app->loadEnvironmentFrom($env_path);
+        // dd($_ENV);
     }
 }

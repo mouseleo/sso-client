@@ -1,0 +1,3 @@
+SSO_BASE_URL=sso-server-base-url
+SSO_REGISTER_APP_ID=sso-register-app-id
+SSO_TOKEN=sso-token
